@@ -1,8 +1,8 @@
 // format function to format the due date
 import { format } from "date-fns";
 
-// Todos are objects containing a todo properities and methods
-class Todo {
+// Tasks are objects containing a task properities and methods
+class Task {
   constructor(title, description, dueDate, priority, folder) {
     (this.title = title),
       (this.description = description),
@@ -42,22 +42,22 @@ class Todo {
   }
 }
 
-function createTodo(title, description, dueDate, priority, folder) {
-  const todo = new Todo(title, description, dueDate, priority, folder);
+function createTask(title, description, dueDate, priority, folder) {
+  const task = new Task(title, description, dueDate, priority, folder);
 
-  // Push created todo to selected folder
-  pushTodoToFolder(todo, folder);
+  // Push created task to selected folder
+  pushTaskToFolder(task, folder);
 
-  return todo;
+  return task;
 }
 
-function pushTodoToFolder(todo, folder) {
+function pushTaskToFolder(task, folder) {
   const folderIndex = folders.findIndex((obj) => obj.name === folder);
 
   folders.at(folderIndex).content.push(todo);
 }
 
-// Folders are objects which will store todos in their content array
+// Folders are objects which will store tasks in their content array
 class Folder {
   constructor(name) {
     this.name = name;
@@ -69,7 +69,7 @@ class Folder {
   }
 }
 
-// folders array contains all the created folders which  contains todos:
+// folders array contains all the created folders which  contains tasks:
 // folders -> aFolderObject -> aTodoObject
 let folders = [];
 
@@ -81,4 +81,4 @@ function createFolder(name) {
   return folder;
 }
 
-export { Todo, createTodo, Folder, createFolder, folders };
+export { Task, createTask, Folder, createFolder, folders };
