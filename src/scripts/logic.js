@@ -54,7 +54,7 @@ function createTask(title, description, dueDate, priority, folder) {
 function pushTaskToFolder(task, folder) {
   const folderIndex = folders.findIndex((obj) => obj.name === folder);
 
-  folders.at(folderIndex).content.push(todo);
+  folders.at(folderIndex).content.push(task);
 }
 
 // Folders are objects which will store tasks in their content array
@@ -70,7 +70,7 @@ class Folder {
 }
 
 // folders array contains all the created folders which  contains tasks:
-// folders -> aFolderObject -> aTodoObject
+// folders -> aFolderObject -> aTaskObject
 let folders = [];
 
 function createFolder(name) {
