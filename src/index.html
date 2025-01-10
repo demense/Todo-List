@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>webpack project</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <header>
+      <h1>TODO LIST</h1>
+      <p class="task-counter">0 tasks left</p>
+    </header>
+    <div class="button-wrapper">
+      <button>TASK</button>
+      <button>FOLDER</button>
+    </div>
+    <form>
+      <label for="task-title"
+        >Title<input
+          type="text"
+          name="task-title"
+          id="task-title"
+          placeholder="What needs to be done?"
+          required
+      /></label>
+      <label>Due Date<input type="date" name="task-due-date" required /></label>
+      <label for="task-priority"
+        >Priority<select name="task-priority" id="task-priority">
+          <option value="low" selected>Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select></label
+      >
+      <label for="task-folder"
+        >Folder<select name="task-folder" id="task-folder"></select
+      ></label>
+      <label for="task-description" class="task-description"
+        >Description<textarea
+          name="task-description"
+          id="task-description"
+          placeholder="Add details about this task..."
+        ></textarea>
+      </label>
+      <button type="submit" id="add">ADD</button>
+    </form>
+  </body>
 </html>
