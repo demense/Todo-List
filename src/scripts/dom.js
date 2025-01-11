@@ -1,7 +1,12 @@
+import { folders } from "./logic";
+
+// Render the form for adding a task
 function renderTaskForm(folders) {
   const body = document.querySelector("body");
 
+  // Form element
   const form = document.createElement("form");
+  form.setAttribute("id", "task-form");
 
   // Title label
   const taskTitleLabel = document.createElement("label");
@@ -78,7 +83,7 @@ function renderTaskForm(folders) {
   // Add button
   const addButton = document.createElement("button");
   addButton.setAttribute("type", "submit");
-  addButton.setAttribute("id", "add");
+  addButton.setAttribute("class", "add");
   addButton.textContent = "ADD";
 
   body.appendChild(form);
@@ -95,4 +100,73 @@ function renderTaskForm(folders) {
   taskDescriptionLabel.appendChild(taskDescriptionTextarea);
 }
 
-export { renderTaskForm };
+// Render the form for adding a folder
+function renderFolderForm() {
+  const body = document.querySelector("body");
+
+  // Form element
+  const form = document.createElement("form");
+  form.setAttribute("id", "folder-form");
+
+  // Name label
+  const folderNameLabel = document.createElement("label");
+  folderNameLabel.setAttribute("for", "folder-name");
+  folderNameLabel.textContent = "Name";
+
+  // Name input
+  const folderNameInput = document.createElement("input");
+  folderNameInput.setAttribute("type", "text");
+  folderNameInput.setAttribute("id", "folder-name");
+  folderNameInput.setAttribute(
+    "placeholder",
+    "What should we name the folder?"
+  );
+  folderNameInput.required = true;
+
+  // Add button
+  const addButton = document.createElement("button");
+  addButton.setAttribute("type", "submit");
+  addButton.setAttribute("class", "add");
+  addButton.textContent = "ADD";
+
+  body.appendChild(form);
+  form.appendChild(folderNameLabel);
+  form.appendChild(addButton);
+  folderNameLabel.appendChild(folderNameInput);
+}
+
+// Add click listener to the task form button
+function taskFormButton() {
+  const button = document.querySelector("#task-form-button");
+
+  button.addEventListener("click", function () {
+    // If the folder form is present, remove it
+    if (document.querySelector("form#folder-form")) {
+      document.querySelector("form#folder-form").remove();
+    }
+    // Or if the task form is already present, do nothing
+    else if (document.querySelector("#task-form")) {
+      return;
+    }
+    renderTaskForm(folders);
+  });
+}
+
+// Add click listener to the folder form button
+function folderFormButton() {
+  const button = document.querySelector("#folder-form-button");
+
+  button.addEventListener("click", function () {
+    // If the task form is present, remove it
+    if (document.querySelector("form#task-form")) {
+      document.querySelector("form#task-form").remove();
+    }
+    // Or if the folder form is already present, do nothing
+    else if (document.querySelector("#folder-form")) {
+      return;
+    }
+    renderFolderForm();
+  });
+}
+
+export { taskFormButton, folderFormButton };
