@@ -26,6 +26,7 @@
   --extra-bold-font: "JetBrains Mono Extra Bold", monospace;
   --grey-color: #aaa; 
   --width: 950px;
+  --form-padding: 15px 10px;
 }
 /* html {
   height: 100vh;
@@ -38,6 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
 
   & header {
     border: 2px solid white;
@@ -57,8 +59,16 @@ body {
   & .button-wrapper {
     width: var(--width);
     margin-top: 8px;
-    /* display: flex;
-    justify-content: start; */
+    border: 2px solid white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    & p {
+      font-family: var(--medium-font);
+      font-size: 18px;
+    }
   }
 
   & button {
@@ -86,7 +96,7 @@ body {
     width: var(--width);
     border: 2px solid white;
     margin-top: 8px;
-    padding: 15px 10px;
+    padding: var(--form-padding);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 8px;
@@ -132,32 +142,34 @@ body {
     width: var(--width);
     border: 2px solid white;
     margin-top: 8px;
-    padding: 15px 10px;
+    padding: var(--form-padding);
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 8px;
     align-items: end;
+
+    & label {
+      font-family: var(--medium-font);
+      display: flex;
+      flex-direction: column;
+    }
+  
+    & input {
+      background-color: black;
+      color: white;
+      border: 2px solid white;
+      padding: 4px 0px 4px 5px;
+    }
+  
+    & input:focus {
+      outline: 1px solid white;
+    }
+  
+    & button.add {
+      width: fit-content;
+      margin-top: 4px;
+    }
   }
 
-  & label {
-    font-family: var(--medium-font);
-    display: flex;
-    flex-direction: column;
-  }
-
-  & input {
-    background-color: black;
-    color: white;
-    border: 2px solid white;
-    padding: 4px 0px 4px 5px;
-  }
-
-  & input:focus {
-    outline: 1px solid white;
-  }
-
-  & button.add {
-    width: fit-content;
-    margin-top: 4px;
-  }
+  
 }
